@@ -8,6 +8,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='app.js')}}"></script>
+  <script type=text/javascript src="{{url_for('static', filename='jquery-3.4.1.js') }}"></script>
+  <script type=text/javascript src="{{url_for('static', filename='chart.js') }}"></script>
+
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
 
 <link rel="stylesheet" type="text/css" href="">
 </head>
@@ -23,9 +29,6 @@
         <a class="nav-link" href="/">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/operation">Operación</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="#">Históricos</a>
       </li>    
     </ul>
@@ -36,23 +39,21 @@
   <div class="row">
     <div class="col-sm-8">
       <h2>Valores medidos</h2>
-      <table>
-        <thead>
-          <tr>
-            <td>Voltaje</td>
-            <td>Corriente</td>
-          </tr>
-        </thead>
-        <tbody>
-          {% for paramet in parametro %}
-          <tr>
-            <td>{{paramet.0}}</td>
-            <td>{{paramet.1}}</td>
-
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      <table class="table table-bordered table-dark" style="width:40%">
+          <thead>
+            <tr>
+              <th scope="col">Voltaje del panel</th>
+              <th scope="col">Corriente del panel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" id="vol">/th>
+              <td id="cor"></td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
       <form action="/setvoltage" method="POST">
         <input type="text" name="voltaje" placeholder="Voltaje">
         <button type="submit">Enviar</button>
@@ -68,6 +69,7 @@
     </div>
   </div>
 </div>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
 </div>
