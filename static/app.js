@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    setInterval(refresh, 2000);
+    setInterval(refresh, 40000);
         function refresh() {
         var return_first = function(){
             var tmp = null;

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="/">Inicio</a></li>
+  <li><a href="/historicos">Históricos</a></li>
+</ul>
+
+<form action="/histor" method="POST">
+
+    <div>
+        <h4>Desde</h4>
+        <input type="date" name="inicio" min="2019-01-01"><br><br>
+    </div>
+    <div>
+        <h4>Hasta</h4>
+        <input type="date" name="final" min="2019-01-01"><br><br>
+    </div>
+    <button type="submit" target="blank" href="/histor" download>Descargar</button>
+
+</form>
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <p>{{message}}</p>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+</body>
+</html>
